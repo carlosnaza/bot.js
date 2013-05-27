@@ -694,7 +694,7 @@
     themeCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "VARIOS RITMO DE MUSICA PERMETIDA,";
+      msg = "PODE VARIOS RITMO DE MUSICA,";
       msg += "MENOS FUNK.!";
       return API.sendChat(msg);
     };
@@ -726,7 +726,7 @@
       msg1 += "4)Respeitar os Adms e Mods;s ";
       msg1 += "5)Nao Fiquem Pedindo Cargos ";
       msg2 = "6)Não use os comandos que os Mods usam.";
-      msg2 += "7)SE DESCOMPRIR E KICK ! ";
+      msg2 += "7)SE NÃO RESPEITA É KICK ! ";
       API.sendChat(msg1);
       return setTimeout((function() {
         return API.sendChat(msg2);
