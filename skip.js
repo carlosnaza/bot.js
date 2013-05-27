@@ -688,14 +688,14 @@
     themeCommand.prototype.init = function() {
       this.command = '!tema';
       this.parseType = 'startsWith';
-      return this.rankPrivelege = 'featured';
+      return this.rankPrivelege = 'user';
     };
 
     themeCommand.prototype.functionality = function() {
       var msg;
 
       msg = "PERMITIDO VARIOS RITMO DE MUSICA,";
-      msg += " MENOS FUNK.!";
+      msg += " SEM MUSICA QUE NÃO É CULTURA.!";
       return API.sendChat(msg);
     };
 
@@ -714,7 +714,7 @@
     rulesCommand.prototype.init = function() {
       this.command = '!rules';
       this.parseType = 'startsWith';
-      return this.rankPrivelege = 'featured';
+      return this.rankPrivelege = 'user';
     };
 
     rulesCommand.prototype.functionality = function() {
@@ -748,7 +748,7 @@
     roomHelpCommand.prototype.init = function() {
       this.command = '!help';
       this.parseType = 'startsWith';
-      return this.rankPrivelege = 'featured';
+      return this.rankPrivelege = 'user';
     };
 
     roomHelpCommand.prototype.functionality = function() {
