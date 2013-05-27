@@ -876,8 +876,8 @@
       min = min < 10 ? '0' + min : min;
       t = data.totalVotingData;
       t['songs'] = data.songCount;
-      launch = 'Iniciou ' + month + '/' + day + ' ' + hour + ':' + min + ' ' + meridian + '. ';
-      totals = '' + t.songs + ' Foram Colocadas e ' + t.woots + ' :+1:, ' + t.mehs + ' :thumbsdown:, e ' + t.curates + ' :heart:.';
+      launch = 'Iniciada em ' + month + '/' + day + ' ' + hour + ':' + min + ' ' + meridian + '. ';
+      totals = '' + t.songs + ' Teve ' ' :+1:, ' + t.woots + ' :thumbsdown:' + t.mehs + ,' :heart:.' + t.curates + ;
       msg = launch + totals;
       return API.sendChat(msg);
     };
@@ -1142,12 +1142,12 @@
               API.sendChat(resp);
               return;
             } else {
-              API.sendChat("I haven't seen " + u.getUser().username + " disconnect.");
+              API.sendChat("O " + u.getUser().username + " Não desconectou.");
               return;
             }
           }
         }
-        return API.sendChat("There is no user in the room by the ID of '" + givenName + "'.");
+        return API.sendChat("Não há nenhum usuário na sala com o nome de '" + givenName + "'.");
       }
     };
 
@@ -1179,19 +1179,19 @@
         u = r.lookupUser(name);
         if (u !== false) {
           votes = r.userVoteRatio(u);
-          msg = u.username + " has wooted " + votes['woot'].toString() + " time";
+          msg = u.username + " tem :+1: " + votes['woot'].toString() + " vezes";
           if (votes['woot'] === 1) {
             msg += ', ';
           } else {
             msg += 's, ';
           }
-          msg += "and meh'd " + votes['meh'].toString() + " time";
+          msg += "e :thumbsdown:'d " + votes['meh'].toString() + " vezes";
           if (votes['meh'] === 1) {
             msg += '. ';
           } else {
             msg += 's. ';
           }
-          msg += "Their woot:vote ratio is " + votes['positiveRatio'].toString() + ".";
+          msg += "Sua :+1: é " + votes['positiveRatio'].toString() + ".";
           return API.sendChat(msg);
         } else {
           return API.sendChat("Não parece ter alguém com o nome de" + name + "'");
