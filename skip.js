@@ -368,9 +368,9 @@
 
     me = API.getSelf();
     myname = me.username;
-    currentversion = "1.3.2";
-    log("PedoBOT versão " + currentversion + " iniciada");
-    return API.sendChat("/me chegou nessa delicia");
+    currentversion = "1.0.0";
+    log("BOT do [SUB] #Carlostyfler versão " + currentversion + " Chupa Jô");
+    return API.sendChat("/me Não se Preocupe o Papai Chegou");
   };
 
   populateUserData = function() {
