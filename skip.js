@@ -720,13 +720,13 @@
     rulesCommand.prototype.functionality = function() {
       var msg1, msg2;
 
-      msg1 = "1)VIDEO NO MAXIMO 6:00. ";
-      msg1 += "2)IGNOREM ESSA REGRA E RESPEITAM AS OUTRAS ";
-      msg1 += "3)Nao escrever em colorido ";
-      msg1 += "4)Respeitar os Adms e Mods;s ";
-      msg1 += "5)Nao Fiquem Pedindo Cargos ";
-      msg2 = "6)Não use os comandos que os Mods usam.";
-      msg2 += "7)SE NÃO RESPEITA É KICK ! ";
+      msg1 = " 1)VIDEO NO MAXIMO 6:00. ";
+      msg1 += " 2)Não use os comandos que os Mods usam. ";
+      msg1 += " 3)Nao escrever em colorido ";
+      msg1 += " 4)Respeitar os Adms e Mods;s ";
+      msg1 += " 5)Nao Fiquem Pedindo Cargos ";
+      msg2 = " 6)SE NÃO RESPEITA É KICK !";
+      msg2 += " E POR ULTIMO NÃO USEM CRACK! ";
       API.sendChat(msg1);
       return setTimeout((function() {
         return API.sendChat(msg2);
