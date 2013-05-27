@@ -70,7 +70,7 @@
       }, {
         interval: 5,
         offset: 0,
-        msg: "Mantenha-se ativo no bate-papo e Votando. Ser não removemos da Lista de DJ e da Cabine!"
+        msg: "Mantenha-se ativo no bate-papo e Votando. Ser não sera Retirado da Lista de DJ e da Cabine!"
       }
     ];
 
@@ -694,8 +694,8 @@
     themeCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "PODE VARIOS RITMO DE MUSICA,";
-      msg += "MENOS FUNK.!";
+      msg = "PERMITIDO VARIOS RITMO DE MUSICA,";
+      msg += " MENOS FUNK.!";
       return API.sendChat(msg);
     };
 
@@ -756,7 +756,7 @@
 
       msg1 = "Bem vindo! Para ser o DJ, Criar uma lista de reprodução e coloque Musica do Youtube ou soundcloud. ";
       msg1 += "Clique no botão "+" e coloca na Lista que você criou e esperar a sua vez.";
-      msg2 = "Coloca música de boa qualidade ou Zoera.  ";
+      msg2 = "Para Ganhas Pontos é có clica em Bacana ou Chato. ";
       msg2 += "Pergunte ao pessoal se não tiver certeza sobre sua escolha da música.";
       API.sendChat(msg1);
       return setTimeout((function() {
