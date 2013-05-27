@@ -663,7 +663,7 @@
       } else {
         selections['artist'] = chooseRandom(arts);
       }
-      msg = "Everyone's heard that " + selections['artist'] + " track! Get new music from http://youtube.com/" + selections['channels'][0] + " http://youtube.com/" + selections['channels'][1] + " or http://youtube.com/" + selections['channels'][2];
+      msg = "Querem musica de Dubstep ? " + selections['artist'] + " entre! Tem musicas nova sempre em http://youtube.com/" + selections['channels'][0] + " http://youtube.com/" + selections['channels'][1] + " ou http://youtube.com/" + selections['channels'][2];
       return API.sendChat(msg);
     };
 
