@@ -712,7 +712,7 @@
     }
 
     rulesCommand.prototype.init = function() {
-      this.command = '!rules';
+      this.command = '!regras';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
@@ -746,7 +746,7 @@
     }
 
     roomHelpCommand.prototype.init = function() {
-      this.command = '!help';
+      this.command = '!ajuda';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
@@ -897,13 +897,13 @@
     dieCommand.prototype.init = function() {
       this.command = '!die';
       this.parseType = 'exact';
-      return this.rankPrivelege = 'mod';
+      return this.rankPrivelege = 'user';
     };
 
     dieCommand.prototype.functionality = function() {
-      API.sendChat("What are you doing!");
+      API.sendChat("Acho que fUi envenenado!");
       undoHooks();
-      API.sendChat("pls stahp");
+      API.sendChat("Vish.");
       data.implode();
       return API.sendChat("Morri! x_x");
     };
