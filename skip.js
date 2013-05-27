@@ -901,7 +901,7 @@
     };
 
     dieCommand.prototype.functionality = function() {
-      API.sendChat("Acho que fUi envenenado!");
+      API.sendChat("Acho que fui envenenado!");
       undoHooks();
       API.sendChat("Vish.");
       data.implode();
