@@ -1413,7 +1413,7 @@
     if (data.currentsong === null) {
       data.newSong();
     } else {
-      API.sendChat("/em: " + data.currentsong.title + " by " + data.currentsong.author + ". Status: :+1:: " + data.currentwoots + ", :-1:: " + data.currentmehs + ", :heart:: " + data.currentcurates + ".");
+      API.sendChat("/em: " + data.currentsong.title + " by " + data.currentsong.author + ". Status: :+1: " + data.currentwoots + ", :-1: " + data.currentmehs + ", :heart: " + data.currentcurates + ".");
       data.newSong();
       document.getElementById("button-vote-positive").click();
     }
