@@ -877,7 +877,7 @@
       t = data.totalVotingData;
       t['songs'] = data.songCount;
       launch = 'Iniciada em ' + month + '/' + day + ' ' + hour + ':' + min + ' ' + meridian + '. ';
-      totals = '' + t.songs + ' Teve: ' + t.woots + ' woots, ' + t.mehs + ' :+1:, and ' + t.curates + ' :heart:.'
+      totals = '' + t.songs + ' Teve: woots ' + t.woots + ',:+1:' + t.mehs + ',:heart:' + t.curates + '.'
       msg = launch + totals;
       return API.sendChat(msg);
     };
