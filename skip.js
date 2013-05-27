@@ -1337,13 +1337,13 @@
     }
 
     promoCommand.prototype.init = function() {
-      this.command = '/tastycat';
+      this.command = '!Siga-me';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'featured';
     };
 
     promoCommand.prototype.functionality = function() {
-      return API.sendChat("/em: " + "Promo code = Pandoric " + "http://community.edmspotlight.com/forum.php ");
+      return API.sendChat("/em: " + "Promo code = Pandoric " + "https://www.facebook.com/Carlostyfler# ");
     };
 
     return promoCommand;
@@ -1359,13 +1359,13 @@
     }
 
     versionCommand.prototype.init = function() {
-      this.command = '/version';
+      this.command = '!version';
       this.parseType = 'exact';
       return this.rankPrivelege = 'mod';
     };
 
     versionCommand.prototype.functionality = function() {
-      return API.sendChat("/me is running SuperBot version " + currentversion);
+      return API.sendChat("/BOT1.0 do [SUB] #Carlostyfler " + currentversion);
     };
 
     return versionCommand;
