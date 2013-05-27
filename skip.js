@@ -66,7 +66,7 @@
       {
         interval: 7,
         offset: 0,
-        msg: "Canal: https://www.youtube.com/jholjho"
+        msg: "Siga-me: https://www.facebook.com/Carlostyfler"
       }, {
         interval: 5,
         offset: 0,
@@ -694,7 +694,7 @@
     themeCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "Temas permitidos aqui na sala.Dubstep,Rock,Rap, ";
+      msg = "Temas permitidos aqui na sala. Dubstep, Rock, Rap, ";
       msg += "e vídeos de humor";
       return API.sendChat(msg);
     };
