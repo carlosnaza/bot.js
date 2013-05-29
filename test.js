@@ -1,0 +1,905 @@
+var o_settings = {
+    autoSkip: true,
+    autoWoot: true,
+    autoQueue: true,
+    welcomeMsg: true,
+    goodbyeMsg: true,
+    rules: 'As regras podem ser encontradas na aba de info!'
+};
+var a_jokes = [];
+var o_tmp = {};
+var b_hasModRights = true;
+var o_autoSkipOpts = {
+  strictMode: false,
+  maxSongLength:6, // in mins
+  i_timerID: null,
+	f_autoSkip: f_long
+};
+
+function f_foxbotInit() { // init foxbot, gets called at the very end
+	window.setTimeout(function(){API.sendChat("");}, 5000);
+
+    b_hasModRights = API.getSelf().moderator;
+    
+	// now all the event listeners
+	API.addEventListener(API.USER_JOIN, join);
+	API.addEventListener(API.USER_LEAVE, leave);
+	API.addEventListener("curateUpdate", f_curate);
+	API.addEventListener(API.CHAT, f_checkChat);
+	API.addEventListener(API.DJ_ADVANCE, f_djAdvance);
+    
+    
+
+	// mute the player
+	Playback.setVolume(20);
+}
+
+
+function join(user)
+{
+    API.sendChat();
+	//window.setTimeout(function(){f_rule({from: user.username});}, 1000);
+}
+
+function leave(user)
+{
+    API.sendChat();
+}
+
+function f_curate(data)
+{ 
+	API.sendChat();
+}
+    
+function f_commands(data) {
+	var cmds = '';
+	for(var cmd in o_chatcmds)
+	{
+		if((cmd != 'brb') && (cmd != 'gotta go') && (cmd != 'g2g') && (cmd != 'gtg') && (cmd != 'got2go')) {
+			cmds = cmds + cmd + ', ';
+		}
+	}
+	cmds_clean = cmds.slice(0, -2);
+    //API.sendChat('/me Commands currently supported are: /commands, /rules, /cake, /lock, /unlock, /skip, /retry, /rapes super, /hugs super, brb, /about, /autoskip, /joke, /test, /reload, /dance');
+	API.sendChat('/me Commands currently supported are: '+cmds_clean);
+}
+
+function f_skip(data) {
+    API.sendChat('/me O DJ atual foi ignorado pelo bot !');
+    window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
+	window.setTimeout(function(){API.sendChat("/me Sua música foi ignorada porque não e permetida aqui ou é muito longa !");}, 2000);
+}
+function f_long() {
+	API.sendChat('@'+o_tmp.username+' Desculpe, sua música é muito grande para o limite de tempo permitido.');
+    window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 1000);
+}
+function f_lock(data) {
+        API.sendChat('/me [superbot] Dj Booth has been locked by operator!');
+        rpcGW.execute('room.update_options', null, Models.room.data.id,
+              {
+                name: Models.room.data.name,
+                description: Models.room.data.description,
+                boothLocked: true,
+                waitListEnabled: Models.room.data.waitListEnabled,
+                maxPlays: Models.room.data.maxPlays,
+                maxDJs:5
+              });
+}
+function f_unlock(data) {
+        API.sendChat('/me O Dj foi removido pelo boot do capeta !');
+        rpcGW.execute('room.update_options', null, Models.room.data.id,
+              {
+                name: Models.room.data.name,
+                description: Models.room.data.description,
+                boothLocked: false,
+                waitListEnabled: Models.room.data.waitListEnabled,
+                maxPlays: Models.room.data.maxPlays,
+                maxDJs:5
+              });
+} 
+function f_retry(data) {
+		API.sendChat('/me Por favor, escolha uma música diferente e tente novamente.');
+		window.setTimeout(function(){ rpcGW.execute('room.update_options', null, Models.room.data.id,
+              {
+                name: Models.room.data.name,
+                description: Models.room.data.description,
+                boothLocked: true,
+                waitListEnabled: Models.room.data.waitListEnabled,
+                maxPlays: Models.room.data.maxPlays,
+                maxDJs:5
+              });}, 1000);
+		window.setTimeout(function(){new ModerationForceSkipService(Models.room.data.historyID);}, 3000);
+		window.setTimeout(function(){rpcGW.execute('room.update_options', null, Models.room.data.id,
+              {
+                name: Models.room.data.name,
+                description: Models.room.data.description,
+                boothLocked: false,
+                waitListEnabled: Models.room.data.waitListEnabled,
+                maxPlays: Models.room.data.maxPlays,
+                maxDJs:5
+              });}, 5000);
+}		
+function f_cookie(data) {
+        API.sendChat('@'+data.from+': Have A Cookie!');
+        window.setTimeout(function(){API.sendChat(' :cookie: '+data.from);}, 500);
+}		
+function f_drink(data) {
+        API.sendChat('@'+data.from+': Here is your drink!');
+        window.setTimeout(function(){API.sendChat(' :beer: '+data.from);}, 500);
+}		
+function f_minecraft(data) {
+        API.sendChat('@'+data.from+': Join the tastycat Minecraft server!');
+        window.setTimeout(function(){API.sendChat('/me Que mandeiro, agora Foda-se '+data.from);}, 500);
+}
+function f_rape(data) {
+        API.sendChat('/me O_O @'+data.from+'!');
+}
+
+function f_hug(data) {
+        API.sendChat('/me Rapes @'+data.from+'!');
+}
+function f_dance(data) {
+        API.sendChat('/me Você é uma rainha na dança!');
+}
+function f_rule(data) {
+        API.sendChat('@'+data.from+' Rules: '+o_settings.rules);
+}
+function f_about(data) {
+		API.sendChat('/me Olá, eu sou Seu Pai. Estou aqui para ajudar você meu filho.');
+}
+function f_brb(data) {
+		API.sendChat('@'+data.from+' Come back soon!');
+}
+
+function f_joke(data) {
+    n = Math.floor(Math.random()*a_jokes.length);
+   
+    API.sendChat('/me piada #'+n+': '+a_jokes[n]);
+}
+function f_test(data) {
+	s = '[AS:  (S: ), AW: '+o_settings.autoWoot+', AQ: '+o_settings.autoQueue+', M: '+b_hasModRights+']';
+	API.sendChat('/me Os sistemas estão online e funcional! '+s);
+}
+function f_reload(data) {
+    API.sendChat('/me bot Restaurado!');
+    window.setTimeout(function(){location.reload();}, 1000);
+}
+
+function f_userIntentLeave(data) {
+	API.sendChat();
+}
+
+function f_toggleStrictMode(data) {
+	if(o_autoSkipOpts.strictMode == false) {
+		API.sendChat('/me Modo escript abilitado.);
+		o_autoSkipOpts.strictMode = true;
+	} else {
+		API.sendChat('/me Modo escript desabilitado');
+		o_autoSkipOpts.strictMode = false;
+	}
+}
+  antispam = function(chat) {
+    var plugRoomLinkPatt, sender;
+    plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?adf\.ly[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    if (plugRoomLinkPatt.exec(chat.message)) {
+      sender = API.getUser(chat.fromID);
+      if (!sender.ambassador && !sender.moderator && !sender.owner && !sender.superuser) {
+        if (!data.users[chat.fromID]["protected"]) {
+          API.sendChat("[SuperBOT] Removeu automaticamente os link!");
+          return API.moderateDeleteChat(chat.chatID);
+        } else {
+          return API.sendChat();
+        }
+      }
+    }
+  };
+
+function f_set(data) {
+    var args = f_getArgs(data.message);
+    var setValue = args[1];
+    var s;
+    if((setValue == 'true') || (setValue == 'false'))
+    {
+        s = 'o_settings.'+args[0]+' = '+setValue+';';
+    } else { // we're dealing with strings
+        setValue = setValue.replace("'", "\\'");
+        s = 'o_settings.'+args[0]+' = \''+setValue+'\';';
+    }
+    eval(s);
+    API.sendChat('/me '+args[0]+' now '+eval('o_settings.'+args[0]));
+}
+
+var o_chatcmds = {
+        '!commands': {
+            f: f_commands,
+            needsPerm: false
+        },
+        
+        '!drink': {
+            f: f_drink,
+            needsPerm: false
+        },
+        
+        '!skip': {
+            f: f_skip,
+            needsPerm: true,
+            needsLocalPerm: true
+        },
+		'!lock': {
+            f: f_lock,
+            needsPerm: true,
+            needsLocalPerm: true
+        },
+		'!unlock': {
+            f: f_unlock,
+            needsPerm: true,
+            needsLocalPerm: true
+        },
+		'!retry': {
+            f: f_retry,
+            needsPerm: true,
+            needsLocalPerm: true
+        },
+        '!cake': {
+            f: f_cookie,
+            needsPerm: false
+        },
+		'!rapes super': {
+            f: f_rape,
+            needsPerm: false
+        },
+		'!hugs super': {
+            f: f_hug,
+            needsPerm: false
+        },
+		'!rules': {
+            f: f_rule,
+            needsPerm: false
+        },
+		'!about': {
+            f: f_about,
+            needsPerm: false
+        },
+		'brb': {
+            f: f_brb,
+            needsPerm: false
+        },
+		'!autostrict': {
+            f: f_toggleStrictMode,
+            needsPerm: true
+        },
+		'!joke': {
+            f: f_joke,
+            needsPerm: true
+        },
+		'!test': {
+            f: f_test,
+            needsPerm: true
+        },
+		'!reload': {
+            f: f_reload,
+            needsPerm: true
+        },
+		'g2g': {
+            f: f_userIntentLeave,
+            needsPerm: false
+        },
+        'gtg': {
+            f: f_userIntentLeave,
+            needsPerm: false
+        },
+		'gotta go': {
+            f: f_userIntentLeave,
+            needsPerm: false
+        },
+		'got2go': {
+            f: f_userIntentLeave,
+            needsPerm: false
+        },
+        '/dance': {
+            f: f_dance,
+            needsPerm: false
+        },
+        '/minecraft': {
+            f: f_minecraft,
+            needsPerm: false
+        },
+        '/set': {
+            f: f_set,
+            needsPerm: true
+        }
+};
+
+function f_checkChat(data) {
+    if((data.type == "message") && (data.fromID != API.getSelf().id)) { // dont parse our own messages
+        o = f_msgMatches(data.message);
+        if(o != false) {
+            if(o.needsPerm)
+            {
+                if(o.needsLocalPerm == true) {
+                    API.sendChat('@'+data.from+': Precisa de direitos de moderador, me desculpe.');
+                    return;
+                }
+                if(API.getUser(data.fromID).moderator || API.getUser(data.fromID).owner) {
+                    o.f(data);
+                } else {
+                    API.sendChat('@'+data.from+': Sinto muito, mas eu tenho medo que eu não posso deixar você fazer isso.');
+                }
+            } else if(!o.needsPerm) {
+                o.f(data);
+            }
+        }
+    }
+}
+
+function f_msgMatches(s) {
+    for(var cmd in o_chatcmds)
+    {
+        if(!b_hasModRights) {
+            
+            if(cmd[0] == '/') { // skip non-slash commands, as they might interfere with other bots
+                cmdNew = '' + cmd;
+            } else {
+                continue;
+            }
+        } else {
+            cmdNew = cmd;
+        }
+        
+        if(s.toString().indexOf(cmdNew) != -1) {
+            return o_chatcmds[cmd];
+        }
+    }
+    
+    return false;
+}
+    
+function f_getArgs(s) {
+    var a_s = s.split(' '); // [0] = <command>; [1-n] args
+    var s_real = '';
+    for(var i = 1; i < a_s.length; i++) {
+        s_real += ' ' + a_s[i];
+    }
+    
+    a_opts = s_real.split(';');
+    
+    return a_opts;
+    
+}
+
+function f_djAdvance(obj)
+{
+        var i_timeRem = -1;
+        s_timeRem = jQuery('#time-remaining-value').text();
+        while(s_timeRem == null) // wait on music to load & time to appear
+        {
+            s_timeRem = jQuery('#time-remaining-value').text();
+        }
+        a_timeRem = s_timeRem.toString().split(':');
+        i_timeRem = (parseInt(a_timeRem[0])*60) + parseInt(a_timeRem[1]);
+
+		// auto-skip code:
+		// clear previous timeout
+		window.clearTimeout(o_autoSkipOpts.i_timerID);
+		// if autoskip enabled & song over time limit
+		if(o_settings.autoSkip && (i_timeRem > (o_autoSkipOpts.maxSongLength)*60)){
+			if(o_autoSkipOpts.strictMode) { // strict mode, skip song immediately
+				var o_djs = API.getDJs();
+				o_tmp.username = o_djs[0].username;
+				f_long();
+			} else {
+				// normal mode (and if track length more than <maxSongLength>): set a timer for <maxSongLength> mins to skip the track
+				var o_djs = API.getDJs();
+				o_tmp.username = o_djs[0].username;
+				o_autoSkipOpts.i_timerID = window.setTimeout(o_autoSkipOpts.f_autoSkip, (o_autoSkipOpts.maxSongLength)*60*1000);
+			}
+		}
+
+		// auto-woot the track if enabled
+		if(o_settings.autoWoot) {
+			jQuery("#button-vote-positive").click();
+		}
+
+
+		// autoqueue if enabled
+		if(o_settings.b_autoQueue) {
+			if(jQuery('#button-dj-waitlist-join').css('display') != 'none') {
+				jQuery('#button-dj-waitlist-join').click();
+			}
+		}
+}
+fans = function(chat) {
+    var msg;
+
+    msg = chat.message.toLowerCase();
+    if (msg.indexOf('fan me') !== -1 || msg.indexOf('fan for fan') !== -1 || msg.indexOf('fan pls') !== -1 || msg.indexOf('fan4fan') !== -1 || msg.indexOf('add me to fan') !== -1 || msg.indexOf('autowoot:') !== -1) {
+      return API.moderateDeleteChat(chat.chatID);
+    }
+  };
+
+a_jokes = ["\
+Q. Why did the man put his money in the freezer?\
+A. He wanted cold hard cash!\
+","\
+Q. What did the porcupine say to the cactus?\
+A. \"Is that you mommy?\"\
+","\
+Q. What do you get when you cross a snowman with a vampire?\
+A. Frostbite.\
+","\
+Q. How do crazy people go through the forest?\
+A. They take the psycho path.\
+","\
+Q. What do prisoners use to call each other?\
+A. Cell phones.\
+","\
+Q. What do you get from a pampered cow?\
+A. Spoiled milk.\
+","\
+Q. Where do polar bears vote?\
+A. The North Poll\
+","\
+Q. What did Geronimo say when he jumped out of the airplane?\
+A. ME!!!\
+","\
+Q. Where do snowmen keep their money?\
+A. In snow banks.\
+","\
+Q. What's brown and sticky?\
+A. A stick.\
+","\
+Q. Why do sea-gulls fly over the sea?\
+A. Because if they flew over the bay they would be bagels!\
+","\
+Q. What dog keeps the best time?\
+A. A watch dog.\
+","\
+Q. Why did the tomato turn red?\
+A. It saw the salad dressing!\
+","\
+Q. What did the grape do when it got stepped on?\
+A. It let out a little wine!\
+","\
+Q. How do you make a tissue dance?\
+A. Put a little boogey in it!\
+","\
+Q. Where do bees go to the bathroom?\
+A. At the BP station!\
+","\
+Q. What did the judge say when the skunk walked in the court room?\
+A. Odor in the court.\
+","\
+Q. What did the water say to the boat?\
+A. Nothing, it just waved.\
+","\
+Q. What did the fish say when he swam into the wall?\
+A. Dam!\
+","\
+Q. Why don't skeletons fight each other?\
+A. They don't have the guts.\
+","\
+Q. What has four legs but can't walk?\
+A. A table!\
+","\
+Q. Why did the turtle cross the road?\
+A. To get to the Shell station!\
+","\
+Q. What did the ground say to the earthquake?\
+A. You crack me up!\
+","\
+Q. What do you get when you cross a cow and a duck?\
+A. Milk and quackers!\
+","\
+Q. Why did the elephant eat the candle?\
+A. He wanted a light snack!\
+","\
+Q. Why is the letter \"G\" scary?\
+A. It turns a host into a ghost\
+","\
+Q. What has  4 eyes but no face?\
+A. Mississippi!\
+","\
+Q. What did the spider do on the computer?\
+A. Made a website!\
+","\
+Q. What letters are not in the alphabet?\
+A. The ones in the mail, of course!\
+","\
+Q. Why was 6 afraid of 7?\
+A. Because 789!\
+","\
+Q. Why did the cookie go to the hospital?\
+A. Because it felt crummy.\
+","\
+Q. How do you know carrots are good for your  eyes?\
+A. Because you never see rabbits wearing glasses!\
+","\
+Q. What do you call a pony with a sore throat?\
+A. A little horse\
+","\
+Q. What do you call cheese that is not yours?\
+A. Nacho Cheese\
+","\
+Q. Why did the sheep say \"moo\"?\
+A. It was learning a new language!\
+","\
+Q. What streets do ghosts haun?\
+A. Dead ends!\
+","\
+Q. What is an astronaut's favorite place on a computer?\
+A. The Space bar!\
+","\
+Q. What exam do young witches have to pass?\
+A. A spell-ing test!\
+","\
+Q. Why did the boy eat his homework?\
+A. Because his teacher said it was a piece of cake!\
+","\
+Q. Why is Basketball such a messy sport?\
+A. Because you dribble on the floor!\
+","\
+Q. What is the best day to go to the beach?\
+A. Sunday, of course!\
+","\
+Q. What bow can't be tied?\
+A. A rainbow!\
+","\
+Q. What happens if you eat yeast and shoe polish?\
+A. Every morning you'll rise and shine!\
+","\
+Q. What does a teddy bear put in his house?\
+A. Fur-niture!\
+","\
+Q.What season is it when you are on a trampoline?\
+A.Spring time.\
+","\
+Q. What happens to cows during an earthquake?\
+A. They give milk shakes!\
+","\
+Q. Why did the jelly wobble?\
+A. Because it saw the milk shake!\
+","\
+Q. What do you call a girl who is always in the bookies?\
+A. Betty!\
+","\
+Q. Where do cows go on holiday?\
+A. Moo York\
+","\
+Q. Where did the computer go to dance?\
+A. To a disc-o.\
+","\
+Q. What do you call a man who rolls in the leaves?\
+A. Russel\
+","\
+Q. What has one head, one foot and four legs?\
+A. A Bed\
+","\
+Q. Why didn't the chicken cross the road?\
+A. He was a chicken.\
+","\
+Q. What is the difference between a school teacher and a train?\
+A. The teacher says spit your gum out and the train says \"chew chew chew\".\
+","\
+Q. Why did the birdie go to the hospital?\
+A. To get a tweetment.\
+","\
+Q. What do you call someone who is afraid of Santa?\
+A. A Clausterphobic\
+","\
+Q. Why was the guy looking for the food on his friend?\
+A. Because his friend said its on me.\
+","\
+Q. Did you hear the joke about the roof?\
+A. Never mind, it's over your head!\
+","\
+Q. What do you call a cow eating grass in a paddock?\
+A. A lawn mooer\
+","\
+Q. Why didn't the skeleton go to the dance?\
+A. Because he had no-body to go with.\
+","\
+Q. What did the penny say to the other penny?\
+A. We make perfect cents.\
+","\
+Q. Why did the man with one hand cross the road?\
+A. To get to the second hand shop.\
+","\
+Q. Why did the picture go to jail?\
+A. Because it was framed.\
+","\
+Q. What are two things you cannot have for breakfast?\
+A. Lunch and dinner.\
+","\
+Q. Why did the boy sprinkle sugar on his pillow before he went to sleep?\
+A. So he could have sweet dreams.\
+","\
+Q. Why did the robber take a bath?\
+A. Because he wanted to make a clean getaway.\
+","\
+Q. What did the judge say to the dentist?\
+A. Do you swear to pull the tooth, the whole tooth and nothing but the tooth.\
+","\
+Q. What do you call a bear with no socks on?\
+A. Bare-foot.\
+","\
+Q. What can you serve but never eat?\
+A. A volleyball.\
+","\
+Q. What did one teddy bear say to the other teddy bear when he offered him some dessert?\
+A. No thank you, I am stuffed.\
+","\
+Q. What kind of shoes do all spies wear?\
+A. Sneakers.\
+","\
+Q. What did one wall say to the other wall?\
+A. I'll meet you at the corner.\
+","\
+Q. Why did the soccer player bring string to the game?\
+A. So he could tie the score.\
+","\
+Q. Why is a baseball team similar to a muffin?\
+A. They both depend on the batter.\
+","\
+Q. What did the alien say to the garden?\
+A. Take me to your weeder.\
+","\
+Q. Have you heard the joke about the butter?\
+A. I better not tell you, it might spread.\
+","\
+Q. How do baseball players stay cool?\
+A. Sit next to their fans.\
+","\
+Q. What gets wetter the more it dries?\
+A. A towel.\
+","\
+Q. Why was the math book sad?\
+A. Because it had too many problems.\
+","\
+Q. What runs but doesn't get anywhere?\
+A. A refrigerator.\
+","\
+Q. How do you catch a squirrel?\
+A. Climb a tree and act like a nut!\
+","\
+Q. What do you do with a blue whale?\
+A. Try to cheer him up! \
+","\
+Q. How do you communicate with a fish?\
+A. Drop him a line!\
+","\
+Q. Where do sheep go to get haircuts?\
+A. To the Baa Baa shop!\
+","\
+Q. What does a shark eat with peanut butter?\
+A. Jellyfish!\
+","\
+Q. Why was the pelican kicked out of the hotel?\
+A. Because he had a big bill!\
+","\
+Q. What do cats eat for breakfast?\
+A. Mice Crispies!\
+","\
+Q. What kind of dog tells time?\
+A. A watch dog!\
+","\
+Q. Why can't a leopard hide?\
+A. Because he's always spotted!\
+","\
+Q. What do you give a dog with a fever?\
+A. Mustard, its the best thing for a hot dog!\
+","\
+Q. What do you get when you cross a cat with a lemon?\
+A. A sour puss!\
+","\
+Q. Why do birds fly south for the winter?\
+A. Its easier than walking!\
+","\
+Q. What kind of key opens a banana?\
+A. A monkey!\
+","\
+Q. How do you know that carrots are good for your eyesight?\
+A. Have you ever seen a rabbit wearing glasses?\
+","\
+Q. Why does a hummingbird hum?\
+A. It doesn't know the words!\
+","\
+Q. Why are some fish at the bottom of the ocean?\
+A. Because they dropped out of school!\
+","\
+Q. What goes up and down but doesn't move?\
+A. The temperature!\
+","\
+Q. What two days of the week start with the letter \"T\"?\
+A. Today and Tomorrow!\
+","\
+Q. Which weighs more, a ton of feathers or a ton of bricks?\
+A. Neither, they both weigh a ton!\
+","\
+Q. What has four eyes but can't see?\
+A. Mississippi!\
+","\
+Q. Where does wood come from?\
+A. A guy named woody.\
+","\
+Q. What has one horn and gives milk\
+A. A milk truck.\
+","\
+Q. Where do bulls get their messages\
+A. On a bull-etin board.\
+","\
+Q. What do bulls do when they go shopping?\
+A. They CHARGE!\
+","\
+Q. Why were the giant's fingers only eleven inches long?\
+A. Because if they were twelve inches long, they'd be a foot.\
+","\
+Q. What is invisible and smells like carrots?\
+A. Bunny Farts!\
+","\
+Q. What runs but can't walk?\
+A. The faucet!\
+","\
+Q. What kind of bed does a mermaid sleep in?\
+A. A water bed!\
+","\
+Q. What kind of crackers do firemen like in their soup?\
+A. Firecrackers!\
+","\
+Q. What did the teddy bear say when he was offered dessert?\
+A. No thanks, I'm stuffed!\
+","\
+Q. Why did the barber win the race?\
+A. Because he took a short cut.\
+","\
+Q. What's taken before you get it?\
+A. Your picture.\
+","\
+Q. Why did the tree go to the dentist?\
+A. To get a root canal.\
+","\
+Q. Why did the child study in the airplane?\
+A. He wanted a higher education!\
+","\
+Q. Why was the broom late?\
+A. It over swept!\
+","\
+Q. What did the fireman's wife get for Christmas?\
+A. A ladder in her stocking!\
+","\
+Q. What did one virus say to another?\
+A. Stay away, I think I've got penicillin!\
+","\
+Q. What did the tie say to the hat?\
+A. You go on ahead and I'll hang around!\
+","\
+Q. What pet makes the loudest noise?\
+A. A trum-pet!\
+","\
+Q. What is a tornado?\
+A. Mother nature doing the twist!\
+","\
+Q. Why did the boy tiptoe past the medicine cabinet?\
+A. He didn't want to wake the sleeping pills!\
+","\
+Q. How do you tease fruit?\
+A. Banananananananana!\
+","\
+Q. Why did Goofy put a clock under his desk?\
+A. Because he wanted to work over-time!\
+","\
+Q. Why did Tommy throw the clock out of the window?\
+A. Because he wanted to see time fly!\
+","\
+Q. How does a moulded fruit-flavoured dessert answer the phone?\
+A. Jell-o!\
+","\
+Q. When do you stop at green and go at red?\
+A. When you're eating a watermelon!\
+","\
+Q. How did the farmer mend his pants?\
+A. With cabbage patches!\
+","\
+Q. Why don't they serve chocolate in prison?\
+A. Because it makes you break out!\
+","\
+Q. What do you call artificial spaghetti?\
+A. Mockaroni!\
+","\
+Q. What happens to a hamburger that misses a lot of school?\
+A. He has a lot of ketchup time!\
+","\
+Q. Why did the man at the orange juice factory lose his job?\
+A. He couldn't concentrate!\
+","\
+Q. How do you repair a broken tomato?\
+A. Tomato Paste!\
+","\
+Q. Why did the baby strawberry cry?\
+A. Because his parents were in a jam!\
+","\
+Q. What did the hamburger name his daughter?\
+A. Patty!\
+","\
+Q. What kind of egg did the bad chicken lay?\
+A. A deviled egg!\
+","\
+Q. What kind of key opens the door on Thanksgiving?\
+A. A turkey!\
+","\
+Q. What kind of cake do you get at a cafeteria?\
+A. A stomach-cake!\
+","\
+Q. Why did the cookie go to the hospital?\
+A. He felt crummy!\
+","\
+Q. When does a cart come before a horse?\
+A. In the dictionary!\
+","\
+Q. Why were the teacher's eyes crossed?\
+A. She couldn't control her pupils!\
+","\
+Q. What do you get when you put a fish and an elephant together?\
+A. Swimming trunks.\
+","\
+Q. What goes up when the rain comes down?\
+A. An umbrella.\
+","\
+Q. What disappears when you stand up?\
+A. Your lap.\
+","\
+Q. What did the big firecracker say to the little firecracker?\
+A. My pop is bigger than yours.\
+","\
+Q. What did the big chimney say to the small chimney?\
+A. You are too little to smoke.\
+","\
+Q. What do you call a surgeon with eight arms?\
+A. A doctopus!\
+","\
+Q. Why did the teacher jump into the lake?\
+A. Because she wanted to test the waters!\
+","\
+Q. Why did the belt go to jail?\
+A. Because it held up a pair of pants!\
+","\
+Q. What is the center of gravity?\
+A. The letter V!\
+","\
+Q. What did the stamp say to the envelope?\
+A. Stick with me and we will go places!\
+","\
+Q. What sort of star is dangerous?\
+A. A shooting star!\
+","\
+Q. Why did the teacher write the lesson on the windows? \
+A. He wanted the lesson to be very clear!\
+","\
+Q. What kind of lights did Noah use on the Ark?\
+A. Flood lights!\
+","\
+Q. What do computers do when they get hungry?\
+A. They eat chips!\
+","\
+Q. Why don't you see giraffes in elementary school?\
+A. Because they're all in High School!\
+","\
+Q. Which is the longest word in the dictionary?\
+A. \"Smiles\", because there is a mile between each \"s\"!\
+","\
+Q. Which month do soldiers hate most?\
+A. The month of March!\
+","\
+Q. What did the painter say to the wall?\
+A. One more crack like that and I'll plaster you!\
+","\
+Q. Why do golfers wear two pairs of pants?\
+A. In case they get a hole in one!\
+","\
+Q. What did the the tie say to the hat?\
+A. You go on a head, I'll just hang around!\
+","\
+Q. What would you call two banana skins?\
+A. A pair of slippers.\
+"];
+
+f_foxbotInit();
