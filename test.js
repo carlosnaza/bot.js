@@ -746,7 +746,7 @@
     }
 
     roomHelpCommand.prototype.init = function() {
-      this.command = '!ajuda';
+      this.command = '!help';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
