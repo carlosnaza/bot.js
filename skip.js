@@ -694,7 +694,7 @@
     themeCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "Temas permitidos aqui na sala. Dubstep, Rock, Rap, ";
+      msg = "Temas permitidos aqui na sala. Dubstep, Rock, PUTARIA, ";
       msg += "e vídeos de humor";
       return API.sendChat(msg);
     };
@@ -1254,7 +1254,7 @@
     }
 
     staffCommand.prototype.init = function() {
-      this.command = '!mods';
+      this.command = '!staff';
       this.parseType = 'exact';
       this.rankPrivelege = 'user';
       return window.lastActiveStaffTime;
