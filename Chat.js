@@ -369,7 +369,7 @@
     me = API.getSelf();
     myname = me.username;
     currentversion = "1.0.0";
-    log("BOT editado pelo Cคภl๏ร Vเcт๏ภ  versão " + currentversion + " Chupa Jô");
+    log("BOT editado pelo C??l?? V?c???  versão " + currentversion + " Chupa Jô");
     return API.sendChat("/me Não se Preocupe o Papai Chegou");
   };
 
@@ -714,7 +714,7 @@
     rulesCommand.prototype.init = function() {
       this.command = '!regras';
       this.parseType = 'startsWith';
-      return this.rankPrivelege = 'featured';
+      return this.rankPrivelege = 'user';
     };
 
     rulesCommand.prototype.functionality = function() {
@@ -748,7 +748,7 @@
     roomHelpCommand.prototype.init = function() {
       this.command = '!ajuda';
       this.parseType = 'startsWith';
-      return this.rankPrivelege = 'featured';
+      return this.rankPrivelege = 'user';
     };
 
     roomHelpCommand.prototype.functionality = function() {
@@ -1365,7 +1365,7 @@
     };
 
     versionCommand.prototype.functionality = function() {
-      return API.sendChat("/me BOT editado 1.0 do Cคภl๏ร Vเcт๏ภ  " + currentversion);
+      return API.sendChat("/me BOT editado 1.0 do C??l?? V?c???  " + currentversion);
     };
 
     return versionCommand;
