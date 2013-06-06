@@ -608,7 +608,7 @@
     newsCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "Assinem o Canal do Youtube: youtube.com/user/jholjho";
+      msg = "Assinem o Canal do Youtube: https://www.youtube.com/user/jholjho";
       return API.sendChat(msg);
     };
 
@@ -923,13 +923,13 @@
     reloadCommand.prototype.init = function() {
       this.command = '!reload';
       this.parseType = 'exact';
-      return this.rankPrivelege = 'host';
+      return this.rankPrivelege = 'Host';
     };
 
     reloadCommand.prototype.functionality = function() {
       var pupSrc;
 
-      API.sendChat('brb');
+      API.sendChat('/me Não se Preocupe o Papai Chegou');
       undoHooks();
       pupSrc = data.pupScriptUrl;
       data.implode();
