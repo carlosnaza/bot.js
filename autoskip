@@ -117,11 +117,11 @@ var COOKIE_STREAM = 'stream';
 var COOKIE_HIDE_VIDEO = 'hidevideo';
 var MAX_USERS_WAITLIST = 50;
 
-var fbMsg = ["Siga-me: https://www.facebook.com/Carlostyfler"];
+var fbMsg = ["Entrem na Pagina da sala: https://www.facebook.com/PedobearDasPutarias1"];
 var rulesMsg = "Regras: 1) Video no Maximo 6 minutos. 2) Sem Flood! 3) Nao escrever em colorido 4) Respeitar os Adms e Mods ;s 5) Nao Fiquem Pedindo Cargos. 6) SE NÃO RESPEITAR É KICK ! E POR ULTIMO NÃO USEM DROGAS!";
 var skipMsg = ["por favor não pedir para pular as músicas, quer pular da deslike."];
 var fansMsg = ["Virem meu Fan que eu retribuo vocês, não esqueça de da @ Menções"];
-var wafflesMsg = ["Waffles para todos! # - (> _ <) - # "," Alguém disse de waffles? # - (> _ <) - #"];
+var wafflesMsg = ["Ppkas para todos! # - (> _ <) - # "," Alguém disse ppkas? # - (> _ <) - #"];
 var bhvMsg = ["por favor, não sejam gays no bate-papo "," por favor, não fale assim, controlar a si mesmo! "," por favor, seja maduros fdps"];
 var sleepMsg = ["Ta na hora de dormi, Fui virjs! "," Indo dormir agora "," estou tão cansado, durmi é necessário, fui me cama. "," cansaço ... sono ... e ... fui me dormir."];
 var workMsg = ["Estou ocupado não sou Vagabundo igual a vocês."];
@@ -549,7 +549,7 @@ function checkSkipped() {
 	if (skipPassed >= skipWait) {
 		clearInterval(skipTimer);
 		skipped = false;
-		skipPassed = 0;
+		skipPassed = 600;
 	}
 	else {
 		skipPassed = skipPassed + 500;
