@@ -6,7 +6,7 @@ function delay() {
 }
 
 function load() {
-  var head = document.getElementsByTagName('head')[0];
+	var head = document.getElementsByTagName('head')[0];
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
 	script.src = 'http://cookies.googlecode.com/svn/trunk/jaaulde.cookies.js';
@@ -118,19 +118,19 @@ var COOKIE_HIDE_VIDEO = 'hidevideo';
 var MAX_USERS_WAITLIST = 50;
 
 var fbMsg = ["Siga-me: https://www.facebook.com/Carlostyfler"];
-var rulesMsg = "Regras: 1) para todas as idades, de forma que nenhum pornô 2) há músicas mais 8 minutos 3) spam pode levar a uma proibição imediata 4) mantenha músicas para EDM 5) divirta-se!";
-var skipMsg = ["por favor não pedir para pular as músicas "," pedindo para pular as músicas podem levar a ser expulso "," por favor, por favor, não pergunte para pular as músicas D:"];
-var fansMsg = ["por favor não pedir para os fãs "," ganhar seus fãs! "," ganhar seus fãs como o resto de nós "," o número de fãs que você tem não significa nada mesmo, então não pergunte para eles!"];
-var wafflesMsg = ["Waffles para todos! # - (> _ <) - # "," Alguém disse de waffles? # - (> _ <) - # "," Queijo ca-I Mean Time dos waffles! # - (> _ <) - # "," Você sabe que é hora de? WAFFLES # - (> _ <) - #"];
-var bhvMsg = ["por favor, seja apropriado no bate-papo "," por favor, não fale assim, controlar a si mesmo! "," por favor, ser maduro nas caras de bate-papo"];
-var sleepMsg = ["Tempo sonolento! "," Ir dormir agora "," tempo para acertar o saco "," tão cansado, o sono é necessário me acha "," cansaço ... tomando ... mais ... deve dormir"];
-var workMsg = ["Estou trabalhando para me falar se eu estou necessário "," Eu vou fazer um trabalho relacionado para animais, mencionar, se necessário "," Eu vou ser ocupado, se necessário mencionar"];
-var afkMsg = ["Eu estou indo embora em um merry quest, voltar em breve! "," Vai AFK por um tempo, voltar em breve! "," Indo embora, voltar em breve! "," Vai caçar a galáxia, estar de volta em breve !"];
-var backMsg = ["Estou de volta das minhas aventuras! "," Eu sou baaaack "," Adivinha quem está de volta? ME! Estou de volta: D "," be-ber-ber-b-be-back!"];
+var rulesMsg = "Regras: 1) Video no Maximo 6 minutos. 2) Sem Flood! 3) Nao escrever em colorido 4) Respeitar os Adms e Mods ;s 5) Nao Fiquem Pedindo Cargos. 6) SE NÃO RESPEITAR É KICK ! E POR ULTIMO NÃO USEM DROGAS!";
+var skipMsg = ["por favor não pedir para pular as músicas, quer pular da deslike."];
+var fansMsg = ["Virem meu Fan que eu retribuo vocês, não esqueça de da @ Menções"];
+var wafflesMsg = ["Waffles para todos! # - (> _ <) - # "," Alguém disse de waffles? # - (> _ <) - #"];
+var bhvMsg = ["por favor, não sejam gays no bate-papo "," por favor, não fale assim, controlar a si mesmo! "," por favor, seja maduros fdps"];
+var sleepMsg = ["Ta na hora de dormi, Fui virjs! "," Indo dormir agora "," estou tão cansado, durmi é necessário, fui me cama. "," cansaço ... sono ... e ... fui me dormir."];
+var workMsg = ["Estou ocupado não sou Vagabundo igual a vocês."];
+var afkMsg = ["Eu estou indo embora e um Vão se foderem."," Vou fica AFK por um tempo, volto em breve! "," Indo embora, volto em breve! "," Vou Viaja nas galáxia, estarei de volta em breve !"];
+var backMsg = ["Estou de volta minhas putinhas! "," Adivinha quem está de volta? Quem sera? Claro que é eu o seu Pai :D"];
 
-var autoAwayMsg = ["Atualmente estou AFK "," Eu sou AFK "," Eu estou em uma aventura (afk) "," desapareceu por um momento "," não está presente no teclado"];
-var autoSlpMsg = ["Atualmente estou dormindo "," Estou contando ovelhas em meus sonhos "," Eu acertei o saco "," estou dormindo "," Eu tenho ido dormir"];
-var autoWrkMsg = ["Atualmente estou trabalhando "," estou ocupado "," fazer um trabalho relacionado animais."];
+var autoAwayMsg = ["Atualmente estou AFK "," Eu estou AFK "," Eu estou em uma aventura (afk) "," desapareceu por um momento "," não está presente no teclado."];
+var autoSlpMsg = ["Atualmente estou dormindo "," Estou comendo ppkas em meus sonhos"];
+var autoWrkMsg = ["Atualmente estou ocupado "," estou ocupado "," fazendo um trabalho relacionado a ppkas."];
 
 overPlayed = ["1:vZyenjZseXA", "1:ZT4yoZNy90s", "1:Bparw9Jo3dk", "1:KrVC5dm5fFc","1:Ys9sIqv42lo", "1:1y6smkh6c-0", "1:jZL-RUZUoGY", "1:CrdoD9T1Heg", "1:6R_Rn1iP82I", "1:ea9tluQ_QtE", "1:f9EM8T5K6d8", "1:aHjpOzsQ9YI", "1:3vC5TsSyNjU", "1:yXLL46xkdlY", "1:_t2TzJOyops", "1:BGpzGu9Yp6Y", "1:YJVmu6yttiw", "1:WSeNSzJ2-Jw", "1:2cXDgFwE13g", "1:PR_u9rvFKzE", "1:i1BDGqIfm8U"];overPlayed = ["1:vZyenjZseXA", "1:ZT4yoZNy90s", "1:Bparw9Jo3dk", "1:KrVC5dm5fFc","1:Ys9sIqv42lo", "1:1y6smkh6c-0", "1:jZL-RUZUoGY", "1:CrdoD9T1Heg", "1:6R_Rn1iP82I", "1:ea9tluQ_QtE", "1:f9EM8T5K6d8", "1:aHjpOzsQ9YI", "1:3vC5TsSyNjU", "1:yXLL46xkdlY", "1:_t2TzJOyops", "1:BGpzGu9Yp6Y", "1:YJVmu6yttiw", "1:WSeNSzJ2-Jw", "1:2cXDgFwE13g", "1:PR_u9rvFKzE", "1:i1BDGqIfm8U"];
 
@@ -243,10 +243,10 @@ function displayUI() {
     	var colorStream = stream ? '#3FFF00' : '#ED1C24';
     	var colorVideo = hideVideo ? '#3FFF00' : '#ED1C24';
 	$('#side-right .sidebar-content').append(
-			'<a id="plug-btn-woot" title="toggles auto woot" style="color:' + colorWoot + '">auto woot</a>'
-		+ 	'<a id="plug-btn-queue" title="toggles auto queue" style="color:' + colorQueue + '">auto queue</a>'
-		+ 	'<a id="plug-btn-stream" title="toggles video stream" style="color:' + colorStream + '">stream</a>'
-		+ 	'<a id="plug-btn-hidevideo" title="toggles hide video" style="color:' + colorVideo + '">hide video</a>'
+			'<a id="plug-btn-woot" title="toggles Auto Bacana" style="color:' + colorWoot + '">auto woot</a>'
+		+ 	'<a id="plug-btn-queue" title="toggles Auto DJ" style="color:' + colorQueue + '">auto queue</a>'
+		+ 	'<a id="plug-btn-stream" title="toggles Ativa e Desativar Video/Audio" style="color:' + colorStream + '">stream</a>'
+		+ 	'<a id="plug-btn-hidevideo" title="toggles Esconde video" style="color:' + colorVideo + '">hide video</a>'
 		+	'<a id="plug-btn-rules" title="sends rules" style="color:#FF8C00">rules</a>'
 		+	'<a id="plug-btn-face" title="sends fb link" style="color:#FF8C00">like our fb</a>'
 		+	'<a id="plug-btn-fans" title="sends fan message" style="color:#FF8C00">no fans</a>'
@@ -448,13 +448,13 @@ function djAdvanced(obj) {
 
 function overPlayedSongs(data) {
 	if (overPlayed.indexOf(Models.room.data.media.id) > -1) {
-		API.sendChat("/me auto skip ligado música mainstream, Fuck baby!");
+		API.sendChat("/me auto skip ligado, Fuck you baby!");
 		setTimeout("new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);", 300);
 		setTimeout("new ModerationForceSkipService;", 600);
 		setTimeout("new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);", 900);
 	}
 	if (Models.room.data.media.duration > 481) {
-		API.sendChat("/me auto skip ligado música com mais de 6 minutos");
+		API.sendChat("/me auto skip ligado, música com mais de 6 minutos seram puladas.");
 		setTimeout("new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);", 300);
 		setTimeout("new ModerationForceSkipService;", 600);
 		setTimeout("new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);", 900);
@@ -558,7 +558,7 @@ function checkSkipped() {
 
 $('#plugbot-css').remove();
 $('#plugbot-js').remove();
-$('#chat-messages').append('<div class="chat-update"><span class="chat-text">Bem-vindo BOT do [ÐJ]#¢คคяlσรıl: 4.1.3</span></div>');
+$('#chat-messages').append('<div class="chat-update"><span class="chat-text">Bem-vindo BOT do [ÐJ]#¢???ls?il: 4.1.3</span></div>');
 $('body').prepend('<style type="text/css" id="plug-css">' + "\n" + styles.join("\n") + "\n" + '</style>');
 $('body').append('</div><div id="side-right" class="sidebar">' +
 '    <div class="sidebar-handle"><span>|||</span></div>' +
