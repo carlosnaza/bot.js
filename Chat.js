@@ -600,7 +600,7 @@
     }
 
     newsCommand.prototype.init = function() {
-      this.command = '!noticia';
+      this.command = '!cotas';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'featured';
     };
@@ -608,7 +608,7 @@
     newsCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "Assinem o Canal do Youtube: https://www.youtube.com/user/jholjho";
+      msg = "/me @#Hell acaba de rouba sua vaga na Faculdade e suas Mulheres!";
       return API.sendChat(msg);
     };
 
@@ -663,7 +663,7 @@
       } else {
         selections['artist'] = chooseRandom(arts);
       }
-      msg = "Querem musica de Dubstep ? " + selections['artist'] + " entre! Tem musicas nova sempre em http://youtube.com/" + selections['channels'][0] + " http://youtube.com/" + selections['channels'][1] + " ou http://youtube.com/" + selections['channels'][2];
+      msg = "Querem musica de Dubstep do " + selections['artist'] + " entre! Tem musicas nova sempre em http://youtube.com/" + selections['channels'][0] + " http://youtube.com/" + selections['channels'][1] + " ou http://youtube.com/" + selections['channels'][2];
       return API.sendChat(msg);
     };
 
