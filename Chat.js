@@ -1337,13 +1337,13 @@
     }
 
     channelCommand.prototype.init = function() {
-      this.command = '!commands';
+      this.command = '!comandos';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
 
     channelCommand.prototype.functionality = function() {
-      return API.sendChat("/em: Lista de comandos: http://pastebin.com/0ETPnY9R");
+      return API.sendChat("/em: Lista de comandos: https://www.google.com.br/ _|_");
     };
 
     return channelCommand;
