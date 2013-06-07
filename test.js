@@ -70,7 +70,7 @@
       }, {
         interval: 5,
         offset: 0,
-        msg: "Mantenha-se ativo no bate-papo e Votando. Ser não sera Retirado da Lista de DJ e da Cabine!"
+        msg: "Mantenha-se ativo no bate-papo e Votando. Se não sera Retirado da Lista de DJ e da Cabine!"
       }
     ];
 
@@ -600,7 +600,7 @@
     }
 
     newsCommand.prototype.init = function() {
-      this.command = '!noticia';
+      this.command = '!cotas';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'featured';
     };
@@ -608,7 +608,7 @@
     newsCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "Assinem o Canal do Youtube: https://www.youtube.com/user/jholjho";
+      msg = "/me Ativou modo cotas e acaba de rouba sua vaga na faculdade e sua mulher.";
       return API.sendChat(msg);
     };
 
@@ -1548,3 +1548,4 @@
   initialize();
 
 }).call(this);
+
