@@ -608,7 +608,7 @@
     newsCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "/me @#Hell acaba de rouba sua vaga na Faculdade e suas Mulheres!";
+      msg = "/me Acaba de Ativar modo Cota e roubou sua vaga na Faculdade e suas Mulheres!";
       return API.sendChat(msg);
     };
 
@@ -754,10 +754,10 @@
     roomHelpCommand.prototype.functionality = function() {
       var msg1, msg2;
 
-      msg1 = "Bem vindo! Para ser o DJ, Criar uma lista de reprodução e coloque Musica do Youtube ou soundcloud. ";
+      msg1 = "Bem vindo a Sala Oficial da Pedobear! Para ser o DJ, Criar uma lista de reprodução e coloque Musica do Youtube ou soundcloud. ";
       msg1 += "Se é novo procure pelo seu nome na sua tela (do lado da cabine de dj e clique) e depois mude o nome.";
-      msg2 = "Para Ganhar Pontos é có clica em Bacana ou Chato. ";
-      msg2 += "Digite !regras pare ler as regras.";
+      msg2 = "Para Ganhar Pontos é só clica em Bacana. ";
+      msg2 += "Digite !regras pare ler as porra das regras.";
       API.sendChat(msg1);
       return setTimeout((function() {
         return API.sendChat(msg2);
@@ -799,7 +799,7 @@
         }
       }
       if (msg === '') {
-        return API.sendChat("Não tem ninguém AFK.");
+        return API.sendChat("Se fudeu não tem ninguém AFK.");
       } else {
         return API.sendChat('AFKs: ' + msg);
       }
@@ -840,7 +840,7 @@
         }
       }
       if (msg === '') {
-        return API.sendChat("Ninguém esta AFK");
+        return API.sendChat("Se fudeu não tem ninguém AFK.");
       } else {
         return API.sendChat('AFKs: ' + msg);
       }
@@ -1194,7 +1194,7 @@
           msg += "O seu vote ratio é: " + votes['positiveRatio'].toString() + ".";
           return API.sendChat(msg);
         } else {
-          return API.sendChat("Não parece ter alguém com o nome de'" + name + "'");
+          return API.sendChat("Não parece ter alguém com esse nome de'" + name + "'");
         }
       } else {
         return API.sendChat("Você quer alguma coisa? Ou você está apenas tentando me irritar.");
@@ -1276,7 +1276,7 @@
         }
       }
       if (stringstaff.length === 0) {
-        stringstaff = "Aff mano não tem staff ativo :'(";
+        stringstaff = "Aff pqp não tem staff ativo :'(";
       }
       return stringstaff;
     };
