@@ -66,11 +66,11 @@
       {
         interval: 7,
         offset: 0,
-        msg: "Parabens! you just read this message"
+        msg: "Add: https://www.facebook.com/Eltoon17"
       }, {
         interval: 5,
         offset: 0,
-        msg: "Stay active in chat and Voting. Be will not be Retrieved List and DJ booth!"
+        msg: "Mantenha-se ativo no bate-papo e Votando. Ser não sera Retirado da Lista de DJ e da Cabine!"
       }
     ];
 
@@ -369,8 +369,8 @@
     me = API.getSelf();
     myname = me.username;
     currentversion = "1.0.0";
-    log("bot edited by ∂נ_¢คคяlσรıl[DIGITAL]lı- version " + currentversion + " :)");
-    return API.sendChat("/me I came to save you from evil!");
+    log("BOT editado pelo C??l?? V?c???  versão " + currentversion + " Chupa Jô");
+    return API.sendChat("/me Não se Preocupe o Papai Chegou");
   };
 
   populateUserData = function() {
@@ -600,7 +600,7 @@
     }
 
     newsCommand.prototype.init = function() {
-      this.command = '!new';
+      this.command = '!noticia';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'featured';
     };
@@ -608,7 +608,7 @@
     newsCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "Keep an eye on http://www.youtube.com/ ";
+      msg = "Assinem o Canal do Youtube: https://www.youtube.com/user/jholjho";
       return API.sendChat(msg);
     };
 
@@ -625,7 +625,7 @@
     }
 
     newSongsCommand.prototype.init = function() {
-      this.command = '!newsongs';
+      this.command = '!musicanovas';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'featured';
     };
@@ -663,7 +663,7 @@
       } else {
         selections['artist'] = chooseRandom(arts);
       }
-      msg = "Want music Dubstep? " + selections['artist'] + " between! New music has always http://youtube.com/" + selections['channels'][0] + " http://youtube.com/" + selections['channels'][1] + " ou http://youtube.com/" + selections['channels'][2];
+      msg = "Querem musica de Dubstep do " + selections['artist'] + " entre! Tem musicas nova sempre em http://youtube.com/" + selections['channels'][0] + " http://youtube.com/" + selections['channels'][1] + " ou http://youtube.com/" + selections['channels'][2];
       return API.sendChat(msg);
     };
 
@@ -686,7 +686,7 @@
     }
 
     themeCommand.prototype.init = function() {
-      this.command = '!theme';
+      this.command = '!tema';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'featured';
     };
@@ -694,8 +694,8 @@
     themeCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "you can any kind of EDM here. ";
-      msg += "alright!";
+      msg = "Temas permitidos aqui na sala. electro, rap(bom), ";
+      msg += "dubstep e videos de humor.";
       return API.sendChat(msg);
     };
 
@@ -712,7 +712,7 @@
     }
 
     rulesCommand.prototype.init = function() {
-      this.command = '!rules';
+      this.command = '!regras';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
@@ -720,13 +720,13 @@
     rulesCommand.prototype.functionality = function() {
       var msg1, msg2;
 
-      msg1 = " 1)VIDEO IN MAXIMO 6:00. ";
-      msg1 += " 2)Do not use commands that use Mods. ";
-      msg1 += " 3)Do not write in color ";
-      msg1 += " 4)Respect the Mods and ADMS;s ";
-      msg1 += " 5)Do not Be Asking positions ";
-      msg2 = " 6)IF YOU DO NOT RESPECT IS KICK!";
-      msg2 += " and lastly do not use drugs! ";
+      msg1 = " 1) Video no Maximo 6 minutos. ";
+      msg1 += " 2) Sem Flood! ";
+      msg1 += " 3) Nao escrever em colorido ";
+      msg1 += " 4) Respeitar os Adms e Mods;s ";
+      msg1 += " 5) Nao Fiquem Pedindo Cargos ";
+      msg2 = " 6) SE NÃO RESPEITAR É KICK !";
+      msg2 += " E POR ULTIMO NÃO USEM DROGAS! ";
       API.sendChat(msg1);
       return setTimeout((function() {
         return API.sendChat(msg2);
@@ -746,7 +746,7 @@
     }
 
     roomHelpCommand.prototype.init = function() {
-      this.command = '!help';
+      this.command = '!ajuda';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
@@ -754,10 +754,10 @@
     roomHelpCommand.prototype.functionality = function() {
       var msg1, msg2;
 
-      msg1 = "Welcome! To be the DJ, create a playlist and put Music from Youtube or soundcloud. ";
-      msg1 += "If you're new look for your name on your screen (beside the dj booth and click) and then change the name.";
-      msg2 = "Earn points for just click Like or Bad. ";
-      msg2 += "Enter !rules to read the rules.";
+      msg1 = "Bem vindo! Para ser o DJ, Criar uma lista de reprodução e coloque Musica do Youtube ou soundcloud. ";
+      msg1 += "Se é novo procure pelo seu nome na sua tela (do lado da cabine de dj e clique) e depois mude o nome.";
+      msg2 = "Para Ganhar Pontos é có clica em Bacana ou Chato. ";
+      msg2 += "Digite !regras pare ler as regras.";
       API.sendChat(msg1);
       return setTimeout((function() {
         return API.sendChat(msg2);
@@ -799,7 +799,7 @@
         }
       }
       if (msg === '') {
-        return API.sendChat("there is no one AFK.");
+        return API.sendChat("Não tem ninguém AFK.");
       } else {
         return API.sendChat('AFKs: ' + msg);
       }
@@ -840,7 +840,7 @@
         }
       }
       if (msg === '') {
-        return API.sendChat("there is no one AFK");
+        return API.sendChat("Ninguém esta AFK");
       } else {
         return API.sendChat('AFKs: ' + msg);
       }
@@ -877,7 +877,7 @@
       t = data.totalVotingData;
       t['songs'] = data.songCount;
       launch = 'Iniciada em ' + month + '/' + day + ' ' + hour + ':' + min + ' ' + meridian + '. ';
-      totals = '' + t.songs + ' had: :+1: ' + t.woots + ',:-1: ' + t.mehs + ',:heart: ' + t.curates + '.'
+      totals = '' + t.songs + ' Teve: :+1: ' + t.woots + ',:-1: ' + t.mehs + ',:heart: ' + t.curates + '.'
       msg = launch + totals;
       return API.sendChat(msg);
     };
@@ -895,17 +895,17 @@
     }
 
     dieCommand.prototype.init = function() {
-      this.command = '!die';
+      this.command = '!adeus';
       this.parseType = 'exact';
       return this.rankPrivelege = 'mod';
     };
 
     dieCommand.prototype.functionality = function() {
-      API.sendChat("I think I've been poisoned!");
+      API.sendChat("Acho que fui envenenado!");
       undoHooks();
-      API.sendChat("fucked");
+      API.sendChat("Vish,");
       data.implode();
-      return API.sendChat("Died! x_x");
+      return API.sendChat("Morri! x_x");
     };
 
     return dieCommand;
@@ -923,13 +923,13 @@
     reloadCommand.prototype.init = function() {
       this.command = '!reload';
       this.parseType = 'exact';
-      return this.rankPrivelege = 'host';
+      return this.rankPrivelege = 'Host';
     };
 
     reloadCommand.prototype.functionality = function() {
       var pupSrc;
 
-      API.sendChat('brb');
+      API.sendChat('/me Não se Preocupe o Papai Chegou');
       undoHooks();
       pupSrc = data.pupScriptUrl;
       data.implode();
@@ -949,7 +949,7 @@
     }
 
     lockCommand.prototype.init = function() {
-      this.command = 'lock';
+      this.command = '!trava';
       this.parseType = 'exact';
       return this.rankPrivelege = 'bouncer';
     };
@@ -971,7 +971,7 @@
     }
 
     unlockCommand.prototype.init = function() {
-      this.command = '!unlock';
+      this.command = '!destrava';
       this.parseType = 'exact';
       return this.rankPrivelege = 'bouncer';
     };
@@ -1019,7 +1019,7 @@
     }
 
     addCommand.prototype.init = function() {
-      this.command = '!skip';
+      this.command = '!add';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'bouncer';
     };
@@ -1135,9 +1135,9 @@
                 if (recentDisconnect.waitlistPosition > 1) {
                   resp += 's';
                 }
-                resp += ' behind the dj booth.';
+                resp += ' atras da cabine de dj.';
               } else {
-                resp += 'He was not in the dj booth.';
+                resp += 'Ele não estava na cabine de dj.';
               }
               API.sendChat(resp);
               return;
@@ -1147,7 +1147,7 @@
             }
           }
         }
-        return API.sendChat("I do not see that person in the room '" + givenName + "'.");
+        return API.sendChat("Eu não vejo essa pessoa na sala '" + givenName + "'.");
       }
     };
 
@@ -1194,10 +1194,10 @@
           msg += "O seu vote ratio é: " + votes['positiveRatio'].toString() + ".";
           return API.sendChat(msg);
         } else {
-          return API.sendChat("There seems to have someone with the name of'" + name + "'");
+          return API.sendChat("Não parece ter alguém com o nome de'" + name + "'");
         }
       } else {
-        return API.sendChat("You want something? Or are you just trying to annoy me.");
+        return API.sendChat("Você quer alguma coisa? Ou você está apenas tentando me irritar.");
       }
     };
 
@@ -1337,13 +1337,13 @@
     }
 
     channelCommand.prototype.init = function() {
-      this.command = '!commands';
+      this.command = '!comandos';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'user';
     };
 
     channelCommand.prototype.functionality = function() {
-      return API.sendChat("/em: Lista de comandos: http://pastebin.com/0ETPnY9R");
+      return API.sendChat("/em: Lista de comandos: https://www.google.com.br/ _|_");
     };
 
     return channelCommand;
@@ -1365,7 +1365,7 @@
     };
 
     versionCommand.prototype.functionality = function() {
-      return API.sendChat("/me bot edited by ∂נ_¢คคяlσรıl[DIGITAL]lı- " + currentversion);
+      return API.sendChat("/me BOT editado 1.0 do C??l?? V?c???  " + currentversion);
     };
 
     return versionCommand;
@@ -1398,7 +1398,7 @@
   };
 
   announceCurate = function(obj) {
-    return APIsendChat("/em: " + obj.user.username + " Music like this!");
+    return APIsendChat("/em: " + obj.user.username + " Gostou dessa Musica!");
   };
 
   handleUserJoin = function(user) {
@@ -1466,10 +1466,10 @@
       sender = API.getUser(chat.fromID);
       if (!sender.ambassador && !sender.moderator && !sender.owner && !sender.superuser) {
         if (!data.users[chat.fromID]["protected"]) {
-          API.sendChat("No spam you crazy");
+          API.sendChat("Sem spam seu preto");
           return API.moderateDeleteChat(chat.chatID);
         } else {
-          return API.sendChat("I should kick him out, but we're here to have fun!");
+          return API.sendChat("Eu deveria expulsá-lo, mas estamos aqui para se diverti!");
         }
       }
     }
