@@ -608,7 +608,7 @@
     newsCommand.prototype.functionality = function() {
       var msg;
 
-      msg = "/me Acaba de Ativar modo Cota e roubou sua vaga na Faculdade e suas Mulheres!";
+      msg = "/me Acaba de Ativar modo Cota e roubou sua vaga na Faculdade e sua vez na Cabine de DJ!";
       return API.sendChat(msg);
     };
 
@@ -714,7 +714,7 @@
     rulesCommand.prototype.init = function() {
       this.command = '!regras';
       this.parseType = 'startsWith';
-      return this.rankPrivelege = 'user';
+      return this.rankPrivelege = 'featured';
     };
 
     rulesCommand.prototype.functionality = function() {
@@ -748,7 +748,7 @@
     roomHelpCommand.prototype.init = function() {
       this.command = '!ajuda';
       this.parseType = 'startsWith';
-      return this.rankPrivelege = 'user';
+      return this.rankPrivelege = 'featured';
     };
 
     roomHelpCommand.prototype.functionality = function() {
