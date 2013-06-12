@@ -443,7 +443,7 @@ function djAdvanced(obj) {
 	if (autowoot) {
 		setTimeout("$('#button-vote-positive').click();", 501);
 	}
-	setTimeout("overPlayedSongs();", 200);
+	setTimeout("overPlayedSongs();", 500);
 }
 
 function overPlayedSongs(data) {
@@ -453,7 +453,7 @@ function overPlayedSongs(data) {
 		setTimeout("new ModerationForceSkipService;", 500);
 		setTimeout("new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);", 200);
 	}
-	if (Models.room.data.media.duration > 200) {
+	if (Models.room.data.media.duration > 500) {
 		API.sendChat("/me auto skip ligado, música com mais de 5 minutos seram puladas.");
 		setTimeout("new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);", 200);
 		setTimeout("new ModerationForceSkipService;", 500);
