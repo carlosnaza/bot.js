@@ -2,7 +2,7 @@
 delay();
 loadDammit();
 function delay() {
-  setTimeout("load();", 6000);
+  setTimeout("load();", 200);
 }
 
 function load() {
@@ -47,7 +47,7 @@ function readCookies() {
 
 function onCookiesLoaded() {
 	if (autowoot) {
-		setTimeout("$('#button-vote-positive').click();", 6005);
+		setTimeout("$('#button-vote-positive').click();", 205);
 	}
 	if (autoqueue && !isInQueue()) {
 		joinQueue();
@@ -105,9 +105,9 @@ var skipped = false;
 var timeToWait = 200;
 var clickWait = 200;
 var skipWait = 201;
-var timePassed = 0;
-var clickPassed = 0;
-var skipPassed = 0;
+var timePassed = 200;
+var clickPassed = 200;
+var skipPassed = 200;
 var timer = null;
 var clickTimer = null;
 var skipTimer = null;
@@ -115,7 +115,7 @@ var COOKIE_WOOT = 'autowoot';
 var COOKIE_QUEUE = 'autoqueue';
 var COOKIE_STREAM = 'stream';
 var COOKIE_HIDE_VIDEO = 'hidevideo';
-var MAX_USERS_WAITLIST = 50;
+var MAX_USERS_WAITLIST = 100;
 
 var fbMsg = ["Entrem na Pagina da sala: https://www.facebook.com/PedobearDasPutarias1"];
 var rulesMsg = "Regras: 1) Video no Maximo 6 minutos. 2) Sem Flood! 3) Nao escrever em colorido 4) Respeitar os Adms e Mods ;s 5) Nao Fiquem Pedindo Cargos. 6) SE NÃO RESPEITAR É KICK ! E POR ULTIMO NÃO USEM DROGAS!";
@@ -549,7 +549,7 @@ function checkSkipped() {
 	if (skipPassed >= skipWait) {
 		clearInterval(skipTimer);
 		skipped = false;
-		skipPassed = 600;
+		skipPassed = 200;
 	}
 	else {
 		skipPassed = skipPassed + 200;
