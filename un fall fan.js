@@ -530,7 +530,7 @@ function checkMentioned() {
 		timePassed = 0;
 	}
 	else {
-		timePassed = timePassed + 201;
+		timePassed = timePassed + 501;
 	}
 }
 
@@ -541,7 +541,7 @@ function checkClicked() {
 		clickPassed = 0;
 	}
 	else {
-		clickPassed = clickPassed + 201;
+		clickPassed = clickPassed + 501;
 	}
 }
 
@@ -549,10 +549,10 @@ function checkSkipped() {
 	if (skipPassed >= skipWait) {
 		clearInterval(skipTimer);
 		skipped = false;
-		skipPassed = 200;
+		skipPassed = 500;
 	}
 	else {
-		skipPassed = skipPassed + 200;
+		skipPassed = skipPassed + 500;
 	}
 }
 
