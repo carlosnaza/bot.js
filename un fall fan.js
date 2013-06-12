@@ -421,7 +421,7 @@ function autoRespond(data) {
 	if (data.type == "mention" && mentioned == false) {
 		if (API.getUser(data.fromID).status == 0) {
 			mentioned = true;
-			timer = setInterval("checkMentioned();", 200);
+			timer = setInterval("checkMentioned();", 500);
 			if (Models.user.data.status == 1) {
 				API.sendChat("@" + data.from + " automsg: " + autoAwayMsg[Math.floor(Math.random() * autoAwayMsg.length)]);
 			}
@@ -441,7 +441,7 @@ function djAdvanced(obj) {
 		$("#playback .frame-background").css("opacity", "0.0");
 	}
 	if (autowoot) {
-		setTimeout("$('#button-vote-positive').click();", 201);
+		setTimeout("$('#button-vote-positive').click();", 501);
 	}
 	setTimeout("overPlayedSongs();", 200);
 }
