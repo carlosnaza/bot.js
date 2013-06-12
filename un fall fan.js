@@ -6,7 +6,7 @@ function delay() {
 }
 
 function load() {
- var head = document.getElementsByTagName('head')[0];
+	var head = document.getElementsByTagName('head')[0];
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
 	script.src = 'http://cookies.googlecode.com/svn/trunk/jaaulde.cookies.js';
@@ -104,8 +104,8 @@ var clicked = false;
 var skipped = false;
 var timeToWait = 1200;
 var clickWait = 1200;
-var skipWait = 029;
-var timePassed = 0;
+var skipWait = 0029;
+var timePassed = 029;
 var clickPassed = 0;
 var skipPassed = 0;
 var timer = null;
