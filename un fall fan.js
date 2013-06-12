@@ -300,42 +300,42 @@ function initUIListeners() {
 	$("#plug-btn-face").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 200);
+			clickTimer = setInterval("checkClicked();", 500);
 		API.sendChat(fbMsg[Math.floor(Math.random() * fbMsg.length)]);
 		}
 	});
 	$("#plug-btn-rules").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 200);
+			clickTimer = setInterval("checkClicked();", 500);
 			API.sendChat(rulesMsg);
 		}
 	});
 	$("#plug-btn-fans").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 200);
+			clickTimer = setInterval("checkClicked();", 500);
 			API.sendChat(fansMsg[Math.floor(Math.random() * fansMsg.length)]);
 		}
 	});
 	$("#plug-btn-noskip").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 200);
+			clickTimer = setInterval("checkClicked();", 500);
 			API.sendChat(skipMsg[Math.floor(Math.random() * skipMsg.length)]);
 		}
 	});
 	$("#plug-btn-waffles").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 200);
+			clickTimer = setInterval("checkClicked();", 500);
 			API.sendChat(wafflesMsg[Math.floor(Math.random() * wafflesMsg.length)]);
 		}
 	});
 	$("#plug-btn-sleeping").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 200);
+			clickTimer = setInterval("checkClicked();", 500);
 			if (Models.user.data.status != 3) {
 				API.sendChat(sleepMsg[Math.floor(Math.random() * sleepMsg.length)]);
 				Models.user.changeStatus(3);
@@ -345,7 +345,7 @@ function initUIListeners() {
 	$("#plug-btn-working").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 200);
+			clickTimer = setInterval("checkClicked();", 500);
 			if (Models.user.data.status != 2) {
 				API.sendChat(workMsg[Math.floor(Math.random() * workMsg.length)]);
 				Models.user.changeStatus(2);
@@ -355,7 +355,7 @@ function initUIListeners() {
 	$("#plug-btn-afk").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 200);
+			clickTimer = setInterval("checkClicked();", 500);
 			if (Models.user.data.status != 1) {
 				API.sendChat(afkMsg[Math.floor(Math.random() * afkMsg.length)]);
 				Models.user.changeStatus(1);
