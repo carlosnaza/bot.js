@@ -102,10 +102,10 @@ var loaded = false;
 var mentioned = false;
 var clicked = false;
 var skipped = false;
-var timeToWait = 1200;
-var clickWait = 1200;
-var skipWait = 0029;
-var timePassed = 029;
+var timeToWait = 200;
+var clickWait = 200;
+var skipWait = 201;
+var timePassed = 0;
 var clickPassed = 0;
 var skipPassed = 0;
 var timer = null;
@@ -300,42 +300,42 @@ function initUIListeners() {
 	$("#plug-btn-face").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
+			clickTimer = setInterval("checkClicked();", 200);
 		API.sendChat(fbMsg[Math.floor(Math.random() * fbMsg.length)]);
 		}
 	});
 	$("#plug-btn-rules").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
+			clickTimer = setInterval("checkClicked();", 200);
 			API.sendChat(rulesMsg);
 		}
 	});
 	$("#plug-btn-fans").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
+			clickTimer = setInterval("checkClicked();", 200);
 			API.sendChat(fansMsg[Math.floor(Math.random() * fansMsg.length)]);
 		}
 	});
 	$("#plug-btn-noskip").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
+			clickTimer = setInterval("checkClicked();", 200);
 			API.sendChat(skipMsg[Math.floor(Math.random() * skipMsg.length)]);
 		}
 	});
 	$("#plug-btn-waffles").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
+			clickTimer = setInterval("checkClicked();", 200);
 			API.sendChat(wafflesMsg[Math.floor(Math.random() * wafflesMsg.length)]);
 		}
 	});
 	$("#plug-btn-sleeping").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
+			clickTimer = setInterval("checkClicked();", 200);
 			if (Models.user.data.status != 3) {
 				API.sendChat(sleepMsg[Math.floor(Math.random() * sleepMsg.length)]);
 				Models.user.changeStatus(3);
@@ -345,7 +345,7 @@ function initUIListeners() {
 	$("#plug-btn-working").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
+			clickTimer = setInterval("checkClicked();", 200);
 			if (Models.user.data.status != 2) {
 				API.sendChat(workMsg[Math.floor(Math.random() * workMsg.length)]);
 				Models.user.changeStatus(2);
@@ -355,7 +355,7 @@ function initUIListeners() {
 	$("#plug-btn-afk").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
+			clickTimer = setInterval("checkClicked();", 200);
 			if (Models.user.data.status != 1) {
 				API.sendChat(afkMsg[Math.floor(Math.random() * afkMsg.length)]);
 				Models.user.changeStatus(1);
@@ -365,7 +365,7 @@ function initUIListeners() {
 	$("#plug-btn-back").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
+			clickTimer = setInterval("checkClicked();", 200);
 			if (Models.user.data.status != 0) {
 				API.sendChat(backMsg[Math.floor(Math.random() * backMsg.length)]);
 				Models.user.changeStatus(0);
@@ -375,7 +375,7 @@ function initUIListeners() {
 	$("#plug-btn-skip").on("click", function() {
 		if (skipped == false) {
 			skipped = true;
-			skipTimer = setInterval("checkSkipped();", 500);
+			skipTimer = setInterval("checkSkipped();", 200);
 			new ModerationForceSkipService;
 		}
 	});
@@ -421,7 +421,7 @@ function autoRespond(data) {
 	if (data.type == "mention" && mentioned == false) {
 		if (API.getUser(data.fromID).status == 0) {
 			mentioned = true;
-			timer = setInterval("checkMentioned();", 1000);
+			timer = setInterval("checkMentioned();", 200);
 			if (Models.user.data.status == 1) {
 				API.sendChat("@" + data.from + " automsg: " + autoAwayMsg[Math.floor(Math.random() * autoAwayMsg.length)]);
 			}
@@ -441,23 +441,23 @@ function djAdvanced(obj) {
 		$("#playback .frame-background").css("opacity", "0.0");
 	}
 	if (autowoot) {
-		setTimeout("$('#button-vote-positive').click();", 6001);
+		setTimeout("$('#button-vote-positive').click();", 201);
 	}
-	setTimeout("overPlayedSongs();", 3000);
+	setTimeout("overPlayedSongs();", 200);
 }
 
 function overPlayedSongs(data) {
 	if (overPlayed.indexOf(Models.room.data.media.id) > -1) {
 		API.sendChat("/me auto skip ligado, Musica Repetida. Fuck you baby!");
-		setTimeout("new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);", 300);
+		setTimeout("new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);", 200);
 		setTimeout("new ModerationForceSkipService;", 600);
-		setTimeout("new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);", 900);
+		setTimeout("new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);", 200);
 	}
 	if (Models.room.data.media.duration > 481) {
 		API.sendChat("/me auto skip ligado, música com mais de 6 minutos seram puladas.");
-		setTimeout("new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);", 300);
+		setTimeout("new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);", 200);
 		setTimeout("new ModerationForceSkipService;", 600);
-		setTimeout("new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);", 900);
+		setTimeout("new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);", 200);
 	}
 }
 
@@ -530,7 +530,7 @@ function checkMentioned() {
 		timePassed = 0;
 	}
 	else {
-		timePassed = timePassed + 601;
+		timePassed = timePassed + 201;
 	}
 }
 
@@ -541,7 +541,7 @@ function checkClicked() {
 		clickPassed = 0;
 	}
 	else {
-		clickPassed = clickPassed + 601;
+		clickPassed = clickPassed + 201;
 	}
 }
 
@@ -552,7 +552,7 @@ function checkSkipped() {
 		skipPassed = 600;
 	}
 	else {
-		skipPassed = skipPassed + 500;
+		skipPassed = skipPassed + 200;
 	}
 }
 
