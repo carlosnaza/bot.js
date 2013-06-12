@@ -47,7 +47,7 @@ function readCookies() {
 
 function onCookiesLoaded() {
 	if (autowoot) {
-		setTimeout("$('#button-vote-positive').click();", 205);
+		setTimeout("$('#button-vote-positive').click();", 505);
 	}
 	if (autoqueue && !isInQueue()) {
 		joinQueue();
