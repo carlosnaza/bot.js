@@ -2,7 +2,7 @@
 delay();
 loadDammit();
 function delay() {
-  setTimeout("load();", 200);
+  setTimeout("load();", 600);
 }
 
 function load() {
