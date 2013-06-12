@@ -365,7 +365,7 @@ function initUIListeners() {
 	$("#plug-btn-back").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
-			clickTimer = setInterval("checkClicked();", 200);
+			clickTimer = setInterval("checkClicked();", 500);
 			if (Models.user.data.status != 0) {
 				API.sendChat(backMsg[Math.floor(Math.random() * backMsg.length)]);
 				Models.user.changeStatus(0);
@@ -375,7 +375,7 @@ function initUIListeners() {
 	$("#plug-btn-skip").on("click", function() {
 		if (skipped == false) {
 			skipped = true;
-			skipTimer = setInterval("checkSkipped();", 200);
+			skipTimer = setInterval("checkSkipped();", 500);
 			new ModerationForceSkipService;
 		}
 	});
