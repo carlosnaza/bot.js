@@ -1311,7 +1311,7 @@
     }
 
     lockskipCommand.prototype.init = function() {
-      this.command = '!lockskip';
+      this.command = '!repetida';
       this.parseType = 'startsWith';
       return this.rankPrivelege = 'bouncer';
     };
@@ -1365,7 +1365,7 @@
     };
 
     versionCommand.prototype.functionality = function() {
-      return API.sendChat("/me BOT editado 1.0 do C??l?? V?c???  " + currentversion);
+      return API.sendChat("/me BOT editado 1.0 " + currentversion);
     };
 
     return versionCommand;
