@@ -66,7 +66,7 @@
       {
         interval: 7,
         offset: 0,
-        msg: "Entrem: https://www.facebook.com/PedobearDasPutarias1"
+        msg: "Entrem na nossa pagina: https://www.facebook.com/PedobeardasPutarias3?fref=ts"
       }, {
         interval: 5,
         offset: 0,
