@@ -1653,8 +1653,8 @@ var stream = true;
 var MAX_USERS_WAITLIST = 150;
 
 
-var fbMsg = ["Sigam meu amigo no Face: http://migre.me/foOCV", "Entrem na Pagina da Sala: http://migre.me/foOOw", "Grupo da sala: http://migre.me/foOQ2"];
-var rulesMsg = "Regras: 1) Video no Maximo 6 minutos. 2) Sem Flood! 3) Nao escrever em colorido. 4)Respeitar os Adms. 5) Nao Fiquem Pedindo Cargos. / Rules: 1) Maximum Video in 6 minutes. 2) No Flood! 3) Do not write in colorful 4) Respect the Mods and ADMS. 5) Do not Be Asking Positions";
+var fbMsg = [" Entrem: wwww.facebook.com"];
+var rulesMsg = "Regras: 1) Video no Maximo 6 minutos. 2) Sem Flood! 3) Nao escrever em colorido. 4)Respeitar os Adms. 5) Nao Fiquem Pedindo Cargos.";
 var skipMsg = ["Por favor, não peça para pular músicas.", "Asking to skip songs can lead to being kicked.", "Already told you to stop being asked to skip songs. :(", "Se fica pedindo pra pular as musica vou chuta da sala. =/"];
 var fansMsg = ["Virem meu Fan que eu retribuo, mas não esqueça de me menciona.", "GO FAN 4 FAN?!!"];
 var wafflesMsg = ["A felicidade é a fruta final e perfeita da obediência às leis da vida. (Helen Keller)", "Penicillin cures men, but it's the wine that makes them happy. (Alexander Fleming)", "Action may not always bring happiness, but there is no happiness without action. (Benjamin Disraeli)", "Você sabe que horas são ? É HORA DA AVENTURA  #-(>_<)-#"];
@@ -2106,7 +2106,7 @@ function checkSkipped() {
 }
 
 delay();
-$('#chat-messages').append('<div class="chat-update"><span class="chat-text">Bem Vindo(a) a nossa sala !! Você ja curtiu a nossa Pagina? Não então está esperando o que ? Vai la e curti: http://migre.me/foOOw</span></div>');
+$('#chat-messages').append('<div class="chat-update"><span class="chat-text">Bem Vindo(a) a nossa sala !!);
 $('body').prepend('<style type="text/css" id="plug-css">' + "\n" + styles.join("\n") + "\n" + '</style>');
 $('body').append('</div><div id="side-right" class="sidebar">' + '<div class="sidebar-handle"><span>|||</span></div>' + '<div class="sidebar-content"></div>' + '<div id="hr-div"><div><div id="hr-style"></div></div></div>' + '</div><div id="side-left" class="sidebar">' + '<div class="sidebar-handle" title="Show/hide userlist."><span>|||</span></div>' + '<div class="sidebar-content2"></div>' + '<div id="hr2-div2"><div><div id="hr2-style2"></div></div></div>' + '</div>');
 $('body').append('<script type="text/javascript" id="plug-js-extra">' + "\n" + scripts.join("\n") + "\n" + '</script>');
